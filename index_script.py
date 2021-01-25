@@ -28,7 +28,7 @@ INDEX_SIZE_MB = 'mb'
 ##### JOURNEY #####
 ###################
 
-journeys = {
+journies = {
     'EDB':['edb', 'containerlogs-edb'],
     'HOME':['home', 'containerlogs-home'],
     'OB':['ob', 'obcompete'],
@@ -56,7 +56,7 @@ for i in range(2, ws.max_row + 1):
 
     index = ws.cell(row=i, column=INDEX).value
 
-    for journey, options in journeys.items():
+    for journey, options in journies.items():
         if any(x in index for x in options): break
     else: journey = 'default'
 
