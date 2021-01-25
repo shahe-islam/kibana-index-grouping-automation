@@ -18,11 +18,11 @@ You will need:
 1. Execute the script in the directory
     ```python3 index_script.py```
 
-1. Enter the full file path to open when prompted, for example 
+1. Enter the full file path to open when prompted, for example :
 
     ```/Users/Shahe.Islam/developer/ndap-journey/ndap-journey.xlsx```
 
-1. Enter the full file save path when prompted
-    ```/Users/Shahe.Islam/developer/ndap-journey/ndap-journey-test2.xlsx```
+1. Enter the full file save path when prompted, for example:
+    ```/Users/Shahe.Islam/developer/ndap-journey/ndap-journey-test.xlsx```
 
 4. Once the script has executed, a new Excel spreadsheet will have generated with the additional columns with the tags and size.
