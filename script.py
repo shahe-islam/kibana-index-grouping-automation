@@ -67,10 +67,9 @@ for i in range(2, ws.max_row + 1):
         journey = 'default'
     
     ws.cell(row=i, column=12).value = journey
-    journey = ''
-
 
 #example save_path /Users/Shahe.Islam/developer/ndap-journey/ndap-journey-test2.xlsx
 
 save_path = input("Input the file save path: ")
 wb.save(save_path)
+print("Your file has been saved at:  " + save_path)
