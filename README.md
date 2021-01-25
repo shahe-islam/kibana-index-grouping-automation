@@ -3,8 +3,6 @@
 ## Overview
 This repo contains the automation script that transforms the Excel sheet for the 1800+ indexes provided by Kibana to size and tag them accordingly.
 
-*The script is extremely reliant on the consistency of the layout for both the Information Capture Form and the Bulk Create/Update Sheet.*
-
 ## Prerequisites
 You will need:
 * Python 3.x.x installed
