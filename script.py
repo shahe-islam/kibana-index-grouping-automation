@@ -12,7 +12,6 @@ ws = wb['Sheet 1']
 
 GB = 'gb'
 MB = 'mb'
-KB = 'kb'
 
 ###################
 ##### JOURNEY #####
@@ -40,7 +39,6 @@ for i in range(2, ws.max_row + 1):
     ws.cell(row=i, column=11).value = size
 
     index = ws.cell(row=i, column=3).value
-    result = ''
 
     if any(x in index for x in EDB):
         journey = 'EDB'
