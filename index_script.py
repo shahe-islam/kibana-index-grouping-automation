@@ -51,7 +51,6 @@ for i in range(2, ws.max_row + 1):
 
     size = ws.cell(row=i, column=ORIGINAL_SIZE).value
     scaled_size = index_size_scaler(size)
-
     ws.cell(row=i, column=SCALED_SIZE).value = scaled_size
 
     index = ws.cell(row=i, column=INDEX).value
