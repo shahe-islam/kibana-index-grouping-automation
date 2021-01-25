@@ -1,7 +1,7 @@
 # NDAP Cluster Index Segregation Automation Script
 
 ## Overview
-This repo contains the automation script that transforms the Excel sheet for the 1800+ indexes provided by Kibana to size and tag them accordingly, allowing them to be grouped according to 
+This repo contains the automation script that transforms the Excel sheet for the 1800+ indexes provided by Kibana to size and tag them accordingly. This allowed them to be grouped according to specific hubs, thereby allowing the new spoke elasticsearch cluster deployments to be sized appropriately.
 
 ## Prerequisites
 You will need:

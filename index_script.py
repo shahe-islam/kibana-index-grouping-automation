@@ -4,10 +4,8 @@ import openpyxl
 
 open_path = input("Input the file open path: ")
 
-
 wb = openpyxl.load_workbook(open_path)
 ws = wb['RAW']
-
 
 ###################
 ##### COLUMNS #####
