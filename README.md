@@ -19,7 +19,6 @@ You will need:
     ```python3 index_script.py```
 
 1. Enter the full file path to open when prompted, for example :
-
     ```/Users/Shahe.Islam/developer/ndap-journey/ndap-journey.xlsx```
 
 1. Enter the full file save path when prompted, for example:
