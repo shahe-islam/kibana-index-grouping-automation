@@ -6,7 +6,8 @@ open_path = input("Input the file open path: ")
 
 
 wb = openpyxl.load_workbook(open_path)
-ws = wb['Sheet 1']
+ws = wb['RAW']
+
 
 ###################
 ##### COLUMNS #####
@@ -37,6 +38,9 @@ journies = {
     'NDAP':['ndap', 'ops', 'containerlogs', 'telegraf', 'beat', 'tgw', 'watcher', 'prod', 'monitoring'],
 }
 
+for k in journies:
+    wb.create_sheet(k)
+
 def index_size_scaler(size):
     if INDEX_SIZE_GB in size:
         size = size.strip(INDEX_SIZE_GB)
@@ -61,7 +65,7 @@ for i in range(2, ws.max_row + 1):
 
     ws.cell(row=i, column=HUB).value = journey
 
-#example save_path /Users/Shahe.Islam/developer/ndap-journey/ndap-journey-test.xlsx
+example save_path /Users/Shahe.Islam/developer/ndap-journey/ndap-journey-test.xlsx
 
 save_path = input("Input the file save path: ")
 wb.save(save_path)
