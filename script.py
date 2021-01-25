@@ -1,21 +1,32 @@
 import openpyxl
 
-directory = "/Users/Shahe.Islam/developer/ndap-journey/"
-filename = "ndap-journey.xlsx"
+#example open_path /Users/Shahe.Islam/developer/ndap-journey/ndap-journey.xlsx
 
-wb = openpyxl.load_workbook(directory + filename)
+open_path = input("Input the file open path: ")
+
+
+wb = openpyxl.load_workbook(open_path)
 ws = wb['Sheet 1']
 
 ###################
 ##### SIZES #######
 ###################
 
-GB = 'gb'
-MB = 'mb'
+LOG_SIZE_GB = 'gb'
+LOG_SIZE_MB = 'mb'
 
 ###################
 ##### JOURNEY #####
 ###################
+
+# journeys = {
+#     EDB = ['edb', 'containerlogs-edb'],
+#     HOME = ['home', 'containerlogs-home'],
+#     OB = ['ob', 'obcompete'],
+#     MYNW = ['mynw', 'mynationwide'],
+#     RAAS = ['raas'],
+#     NDAP = ['ndap', 'ops', 'containerlogs', 'telegraf', 'beat', 'tgw', 'watcher', 'prod', 'monitoring'],
+# }
 
 EDB = ['edb', 'containerlogs-edb']
 HOME = ['home', 'containerlogs-home']
@@ -28,11 +39,11 @@ for i in range(2, ws.max_row + 1):
 
     size = ws.cell(row=i, column=9).value
 
-    if GB in size:
-        size = size.strip(GB)
+    if LOG_SIZE_GB in size:
+        size = size.strip(LOG_SIZE_GB)
         size = str(float(size)*10000)
-    elif MB in size:
-        size = size.strip(MB)
+    elif LOG_SIZE_MB in size:
+        size = size.strip(LOG_SIZE_MB)
     else:
         size = 0
 
@@ -58,5 +69,8 @@ for i in range(2, ws.max_row + 1):
     ws.cell(row=i, column=12).value = journey
     journey = ''
 
-test_filename = "ndap-journey-test.xlsx"
-wb.save(directory + test_filename)
+
+#example save_path /Users/Shahe.Islam/developer/ndap-journey/ndap-journey-test2.xlsx
+
+save_path = input("Input the file save path: ")
+wb.save(save_path)
