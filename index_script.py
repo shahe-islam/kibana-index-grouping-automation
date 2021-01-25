@@ -72,4 +72,4 @@ for i in range(2, ws.max_row + 1):
 
 save_path = input("Input the file save path: ")
 wb.save(save_path)
-print("Your file has been saved at:  " + save_path)
+print("Your file has been saved at: " + save_path)
