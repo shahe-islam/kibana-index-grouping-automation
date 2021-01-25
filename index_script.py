@@ -9,6 +9,14 @@ wb = openpyxl.load_workbook(open_path)
 ws = wb['Sheet 1']
 
 ###################
+##### COLUMNS #####
+###################
+
+INDEX_COLUMN = 3
+SIZE_COLUMN = 11
+HUB_COLUMN = 12
+
+###################
 ##### SIZES #######
 ###################
 
@@ -40,15 +48,15 @@ for i in range(2, ws.max_row + 1):
     else:
         size = 0
 
-    ws.cell(row=i, column=11).value = size
+    ws.cell(row=i, column=SIZE_COLUMN).value = size
 
-    index = ws.cell(row=i, column=3).value
+    index = ws.cell(row=i, column=INDEX_COLUMN).value
 
     for journey, options in journeys.items():
         if any(x in index for x in options): break
     else: journey = 'default'
 
-    ws.cell(row=i, column=12).value = journey
+    ws.cell(row=i, column=HUB_COLUMN).value = journey
 
 #example save_path /Users/Shahe.Islam/developer/ndap-journey/ndap-journey-test2.xlsx
 
