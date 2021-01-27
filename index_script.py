@@ -49,7 +49,7 @@ def index_size_scaler(size):
         size = size.strip(INDEX_SIZE_GB)
     elif INDEX_SIZE_MB in size:
         size = size.strip(INDEX_SIZE_MB)
-        size = str(float(size)/1024)
+        size = float(size)/1024
     else:
         size = 0
     return size
@@ -58,7 +58,7 @@ for i in range(2, ws.max_row + 1):
 
     size = ws.cell(row=i, column=ORIGINAL_SIZE).value
     scaled_size = index_size_scaler(size)
-    ws.cell(row=i, column=SCALED_SIZE).value = scaled_size
+    ws.cell(row=i, column=SCALED_SIZE).value = float(scaled_size)
 
     index = ws.cell(row=i, column=INDEX).value
 
