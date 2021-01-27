@@ -1,5 +1,3 @@
-import openpyxl
-
 ###################
 ##### COLUMNS #####
 ###################
@@ -29,7 +27,9 @@ hubs = {
     'NDAP':['ndap', 'ops', 'containerlogs', 'telegraf', 'beat', 'tgw', 'watcher', 'prod', 'monitoring'],
 }
 
-#example open_path /Users/Shahe.Islam/developer/ndap-journey/ndap-journey.xlsx
+import openpyxl
+
+#/Users/Shahe.Islam/developer/ndap-journey/ndap-journey.xlsx
 
 open_path = input("Input the file open path: ")
 
@@ -68,7 +68,7 @@ for i in range(2, ws.max_row + 1):
 
     ws.cell(row=i, column=HUB).value = hub
 
-#example save_path /Users/Shahe.Islam/developer/ndap-journey/ndap-journey-test.xlsx
+#/Users/Shahe.Islam/developer/ndap-journey/ndap-journey-test.xlsx
 
 save_path = input("Input the file save path: ")
 wb.save(save_path)
