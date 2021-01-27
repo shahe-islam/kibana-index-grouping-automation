@@ -5,7 +5,7 @@ import openpyxl
 open_path = input("Input the file open path: ")
 
 wb = openpyxl.load_workbook(open_path)
-ws = wb['RAW']
+ws = wb['Sheet 1']
 
 ###################
 ##### COLUMNS #####
@@ -24,10 +24,10 @@ INDEX_SIZE_GB = 'gb'
 INDEX_SIZE_MB = 'mb'
 
 ###################
-##### JOURNEY #####
+###### HUBS #######
 ###################
 
-journies = {
+hubs = {
     'EDB':['edb', 'containerlogs-edb'],
     'HOME':['home', 'containerlogs-home'],
     'OB':['ob', 'obcompete'],
@@ -36,15 +36,15 @@ journies = {
     'NDAP':['ndap', 'ops', 'containerlogs', 'telegraf', 'beat', 'tgw', 'watcher', 'prod', 'monitoring'],
 }
 
-for k in journies:
+for k in hubs:
     wb.create_sheet(k)
 
 def index_size_scaler(size):
     if INDEX_SIZE_GB in size:
         size = size.strip(INDEX_SIZE_GB)
-        size = str(float(size)*1024)
     elif INDEX_SIZE_MB in size:
         size = size.strip(INDEX_SIZE_MB)
+        size = str(float(size)/1024)
     else:
         size = 0
     return size
@@ -57,11 +57,11 @@ for i in range(2, ws.max_row + 1):
 
     index = ws.cell(row=i, column=INDEX).value
 
-    for journey, options in journies.items():
-        if any(x in index for x in options): break
-    else: journey = 'default'
+    for hub, journey in hubs.items():
+        if any(x in index for x in journey): break
+    else: hub = 'default'
 
-    ws.cell(row=i, column=HUB).value = journey
+    ws.cell(row=i, column=HUB).value = hub
 
 #example save_path /Users/Shahe.Islam/developer/ndap-journey/ndap-journey-test.xlsx
 
