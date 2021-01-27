@@ -1,3 +1,5 @@
+import openpyxl
+
 ###################
 ##### COLUMNS #####
 ###################
@@ -26,8 +28,6 @@ hubs = {
     'RAAS':['raas'],
     'NDAP':['ndap', 'ops', 'containerlogs', 'telegraf', 'beat', 'tgw', 'watcher', 'prod', 'monitoring'],
 }
-
-import openpyxl
 
 #/Users/Shahe.Islam/developer/ndap-journey/ndap-journey.xlsx
 
@@ -64,6 +64,9 @@ for i in range(2, ws.max_row + 1):
 
     for hub, journey in hubs.items():
         if any(x in index for x in journey): break
+
+        ##TODO Add functionality to automatically copy current row in loop to row in matching worksheet
+
     else: hub = 'default'
 
     ws.cell(row=i, column=HUB).value = hub
