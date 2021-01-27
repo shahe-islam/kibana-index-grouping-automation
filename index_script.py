@@ -1,12 +1,5 @@
 import openpyxl
 
-#example open_path /Users/Shahe.Islam/developer/ndap-journey/ndap-journey.xlsx
-
-open_path = input("Input the file open path: ")
-
-wb = openpyxl.load_workbook(open_path)
-ws = wb['Sheet 1']
-
 ###################
 ##### COLUMNS #####
 ###################
@@ -36,8 +29,20 @@ hubs = {
     'NDAP':['ndap', 'ops', 'containerlogs', 'telegraf', 'beat', 'tgw', 'watcher', 'prod', 'monitoring'],
 }
 
+#example open_path /Users/Shahe.Islam/developer/ndap-journey/ndap-journey.xlsx
+
+open_path = input("Input the file open path: ")
+
+wb = openpyxl.load_workbook(open_path)
+ws = wb['Sheet 1']
+
 for k in hubs:
     wb.create_sheet(k)
+    nws = wb[k]
+
+    for i,row in enumerate(ws.iter_rows(max_row=1)):
+        for j,col in enumerate(row):
+            nws.cell(row=i+1,column=j+1).value = col.value
 
 def index_size_scaler(size):
     if INDEX_SIZE_GB in size:
