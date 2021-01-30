@@ -30,19 +30,20 @@ hubs = {
 }
 
 #/Users/Shahe.Islam/developer/ndap-journey/ndap-journey.xlsx
+#/Users/Shahe.Islam/developer/ndap-journey/ndap-journey-test.xlsx
 
 open_path = input("Input the file open path: ")
 
 wb = openpyxl.load_workbook(open_path)
 ws = wb['Sheet 1']
 
-for k in hubs:
-    wb.create_sheet(k)
-    nws = wb[k]
-
-    for i,row in enumerate(ws.iter_rows(max_row=1)):
-        for j,col in enumerate(row):
-            nws.cell(row=i+1,column=j+1).value = col.value
+def list_headings():
+    for k in hubs:
+        wb.create_sheet(k)
+        nws = wb[k]
+        for i,row in enumerate(ws.iter_rows(max_row=1)):
+            for j,col in enumerate(row):
+                nws.cell(row=i+1,column=j+1).value = col.value
 
 def index_size_scaler(size):
     if INDEX_SIZE_GB in size:
@@ -54,23 +55,27 @@ def index_size_scaler(size):
         size = 0
     return size
 
-for i in range(2, ws.max_row + 1):
+for i in range(1, ws.max_row + 1):
 
-    size = ws.cell(row=i, column=ORIGINAL_SIZE).value
-    scaled_size = index_size_scaler(size)
-    ws.cell(row=i, column=SCALED_SIZE).value = float(scaled_size)
+    if i == 1:
+        list_headings()
+    else: 
+        size = ws.cell(row=i, column=ORIGINAL_SIZE).value
+        scaled_size = index_size_scaler(size)
+        ws.cell(row=i, column=SCALED_SIZE).value = float(scaled_size)
 
-    index = ws.cell(row=i, column=INDEX).value
+        index = ws.cell(row=i, column=INDEX).value
 
-    for hub, journey in hubs.items():
-        if any(x in index for x in journey): break
+        for hub, journey in hubs.items():
+            if any(x in index for x in journey): break
 
-        ##TODO Add functionality to automatically copy current row in loop to row in matching worksheet
+            ##TODO Add functionality to automatically copy current row in loop to row in matching worksheet
 
-    else: hub = 'default'
+        else: hub = 'default'
 
-    ws.cell(row=i, column=HUB).value = hub
+        ws.cell(row=i, column=HUB).value = hub
 
+#/Users/Shahe.Islam/developer/ndap-journey/ndap-journey.xlsx
 #/Users/Shahe.Islam/developer/ndap-journey/ndap-journey-test.xlsx
 
 save_path = input("Input the file save path: ")
