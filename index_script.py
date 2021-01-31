@@ -80,7 +80,6 @@ for i in range(1, ws.max_row + 1):
             if any(x in index for x in journey):
                 
                 correctws = wb[hub]
-                oldrow = ws[i]
                 newrow = counters[hub] + 2
 
                 for row in ws.iter_rows(min_row = i, max_row = i):
