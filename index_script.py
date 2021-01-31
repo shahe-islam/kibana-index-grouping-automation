@@ -72,12 +72,14 @@ for i in range(1, ws.max_row + 1):
 #############################################            
             
             correctws = wb[hub]
-
-            for newrow in correctws.rows:
-                for cell in newrow:
+            oldrow = ws[i]
+            
+            for k in range(correctws.max_row, correctws.max_row + 2):
+                for cell in k:
                     if cell.value is None:    
-                        for j,col in ws.iter_rows(i):
-                            correctws.cell(row=newrow,column=j+1).value = col.value
+                        for j,col in enumerate(oldrow):
+                            correctws.cell(row=k,column=j+1).value = col.value
+
 
 ##############################################
 
