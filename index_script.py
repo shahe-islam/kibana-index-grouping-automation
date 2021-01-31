@@ -16,17 +16,26 @@ HUB = 12
 INDEX_SIZE_GB = 'gb'
 INDEX_SIZE_MB = 'mb'
 
-###################
-###### HUBS #######
-###################
+##############################
+###### HUBS & COUNTERS #######
+##############################
 
 hubs = {
     'EDB':['edb', 'containerlogs-edb'],
-    'HOME':['home', 'containerlogs-home'],
+    'HOME':['home', 'containerlogs-home'], 
     'OB':['ob', 'obcompete'],
     'MYNW':['mynw', 'mynationwide'],
     'RAAS':['raas'],
     'NDAP':['ndap', 'ops', 'containerlogs', 'telegraf', 'beat', 'tgw', 'watcher', 'prod', 'monitoring'],
+}
+
+counters = {
+    'EDB': 0,
+    'HOME': 0, 
+    'OB': 0,
+    'MYNW': 0,
+    'RAAS': 0,
+    'NDAP': 0,
 }
 
 #/Users/Shahe.Islam/developer/ndap-journey/ndap-journey.xlsx
@@ -67,13 +76,22 @@ for i in range(1, ws.max_row + 1):
         index = ws.cell(row=i, column=INDEX).value
 
         for hub, journey in hubs.items():
-            if any(x in index for x in journey): break
 
-            ##TODO Add functionality to automatically copy current row in loop to row in matching worksheet
+            if any(x in index for x in journey):
+                
+                correctws = wb[hub]
+                oldrow = ws[i]
+                newrow = counters[hub] + 2
 
-        else: hub = 'default'
+                for row in ws.iter_rows(min_row = i, max_row = i):
+                    for j, cell in enumerate(row):
+                        correctws.cell(row=newrow,column=j+1).value = cell.internal_value
+                
+                counters[hub] += 1
+                break
 
-        ws.cell(row=i, column=HUB).value = hub
+            else: 
+                hub = 'default'
 
 #/Users/Shahe.Islam/developer/ndap-journey/ndap-journey.xlsx
 #/Users/Shahe.Islam/developer/ndap-journey/ndap-journey-test.xlsx
