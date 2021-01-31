@@ -67,9 +67,19 @@ for i in range(1, ws.max_row + 1):
         index = ws.cell(row=i, column=INDEX).value
 
         for hub, journey in hubs.items():
-            if any(x in index for x in journey): break
+            if any(x in index for x in journey):break
 
-            ##TODO Add functionality to automatically copy current row in loop to row in matching worksheet
+#############################################            
+            
+            correctws = wb[hub]
+
+            for newrow in correctws.rows:
+                for cell in newrow:
+                    if cell.value is None:    
+                        for j,col in ws.iter_rows(i):
+                            correctws.cell(row=newrow,column=j+1).value = col.value
+
+##############################################
 
         else: hub = 'default'
 
