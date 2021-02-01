@@ -91,6 +91,11 @@ for i in range(1, ws.max_row + 1):
 
             else: 
                 hub = 'default'
+                
+for k in hubs:
+    sumws = wb[k]
+    data = [sumws.cell(row=i,column=SCALED_SIZE).value for i in range(2, counters[k] + 2)]
+    print(k + ": " + str(int(sum(data))) + ' GB')
 
 #/Users/Shahe.Islam/developer/ndap-journey/ndap-journey.xlsx
 #/Users/Shahe.Islam/developer/ndap-journey/ndap-journey-test.xlsx
