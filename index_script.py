@@ -64,6 +64,12 @@ def index_size_scaler(size):
         size = 0
     return size
 
+def sum_indexes():
+    for k in hubs:
+        ws = wb[k]
+        data = [ws.cell(row=i,column=SCALED_SIZE).value for i in range(2, counters[k] + 2)]
+        print(k + ": " + str(int(sum(data))) + ' GB')
+
 for i in range(1, ws.max_row + 1):
 
     if i == 1:
@@ -91,11 +97,8 @@ for i in range(1, ws.max_row + 1):
 
             else: 
                 hub = 'default'
-                
-for k in hubs:
-    ws = wb[k]
-    data = [ws.cell(row=i,column=SCALED_SIZE).value for i in range(2, counters[k] + 2)]
-    print(k + ": " + str(int(sum(data))) + ' GB')
+            
+sum_indexes()
 
 #/Users/Shahe.Islam/developer/ndap-journey/ndap-journey.xlsx
 #/Users/Shahe.Islam/developer/ndap-journey/ndap-journey-test.xlsx
