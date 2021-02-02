@@ -1,7 +1,15 @@
 # Kibana Index Grouping Automation Script
 
 ## Overview
-This repo contains the automation script that transforms the Excel sheet for the 1800+ indexes provided by Kibana to size and tag them accordingly. This allowed them to be grouped according to specific hubs, thereby allowing the new spoke elasticsearch cluster deployments to be sized appropriately.
+This repo contains the automation script that transforms the Excel sheet for the 1800+ indexes provided by Kibana to size them accordingly and split them into different sheets. This allows them to be grouped according to specific hubs.
+
+In order to modify the functionality the only changes that need to be made are to the hub dictionary. This will filter for any values for a given key and if found move it over to the Sheet titled with the Key.
+
+e.g EDB: 'edb-banking, edb-logs' , will take any indexes with these strings within them and move them to sheet titled 'EDB'.
+
+The total sizing out the indexes for each key/sheet is given in the terminal at the end, thereby allowing the new spoke elasticsearch cluster deployments to be sized appropriately.
+
+
 
 ## Prerequisites
 You will need:
