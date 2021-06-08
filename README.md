@@ -17,7 +17,6 @@ You will need:
 * The completed Excel CSV file which can be extractd via the Kibana API
 * This repo cloned
 * Pip installed
-* Python 3 installed
 * Openpyxl installed using ```pip install openpyxl```
 
 *It is recommended that you do not store the Excel Sheet in the repo directory to avoid accidental file commits.*
